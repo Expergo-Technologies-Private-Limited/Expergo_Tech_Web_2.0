@@ -1,0 +1,803 @@
+.gst-page {
+  color: #0f172a;
+}
+
+.gst-hero {
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  padding: 83px 24px 30px;
+  background: #fff;
+}
+
+.gst-hero__glow {
+  position: absolute;
+  z-index: -1;
+  top: 20px;
+  left: 5%;
+  width: 384px;
+  height: 384px;
+  border-radius: 9999px;
+  background: rgba(94, 71, 209, 0.05);
+  filter: blur(32px);
+  pointer-events: none;
+}
+
+.gst-hero__content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 36px;
+  width: min(1154px, 100%);
+  margin: 0 auto;
+}
+
+.gst-hero__copy {
+  min-width: 0;
+}
+
+.gst-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 41px;
+  margin-bottom: 43px;
+  padding: 6px 17px;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: #15b5c1;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.gst-hero h1 {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #0f172a;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: clamp(40px, 3.62vw, 52px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.16;
+}
+
+.gst-hero__accent {
+  color: #15b5c1;
+  white-space: nowrap;
+}
+
+.gst-hero__description {
+  margin: 26px 0 0;
+  color: #475569;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.gst-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 82px;
+}
+
+.gst-button {
+  display: inline-flex;
+  min-width: 203px;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1a80e6;
+  border-radius: 8.862px;
+  padding: 0 18px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23.631px;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.gst-button:hover {
+  transform: translateY(-2px);
+}
+
+.gst-button:focus-visible {
+  outline: 3px solid rgba(26, 128, 230, 0.28);
+  outline-offset: 3px;
+}
+
+.gst-button--primary {
+  background: #1a80e6;
+  color: #fff;
+  cursor: pointer;
+}
+
+.gst-button--primary:hover {
+  background: #146fc9;
+}
+
+.gst-button--secondary {
+  background: #fff;
+  color: #000;
+}
+
+.gst-button--secondary:hover {
+  background: #f4faff;
+  color: #1a80e6;
+}
+
+.gst-hero__visual {
+  min-width: 0;
+}
+
+.gst-dashboard {
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #d9e3df;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(23, 61, 52, 0.13);
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-dashboard__topbar {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dce5e4;
+  padding: 0 18px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16.5px;
+}
+
+.gst-dashboard__dots {
+  color: #9aafa6;
+  letter-spacing: 3px;
+}
+
+.gst-dashboard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.gst-dashboard__company {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  justify-content: space-between;
+  color: #63787e;
+  font-size: 12px;
+  line-height: 19.8px;
+}
+
+.gst-dashboard__badge {
+  border-radius: 20px;
+  background: #b9e9ec;
+  padding: 3px 9px;
+  color: #15b5c1;
+  font-size: 10px;
+  line-height: 16.5px;
+}
+
+.gst-dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  padding: 2px 0;
+}
+
+.gst-dashboard__stat {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2.89px;
+  padding-top: 6.5px;
+}
+
+.gst-dashboard__stat span {
+  color: #63787e;
+  font-size: 10px;
+  line-height: 16.5px;
+  white-space: nowrap;
+}
+
+.gst-dashboard__stat strong {
+  color: #152e37;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 37.95px;
+  white-space: nowrap;
+}
+
+.gst-chart {
+  position: relative;
+  height: 179px;
+  overflow: hidden;
+}
+
+.gst-chart__layer {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+}
+
+.gst-chart__grid {
+  top: 11.76%;
+  left: 4.35%;
+  width: 92.39%;
+}
+
+.gst-chart__sales {
+  top: 15.88%;
+  left: 4.35%;
+  width: 92.39%;
+}
+
+.gst-chart__purchases {
+  top: 47.65%;
+  left: 4.35%;
+  width: 92.5%;
+}
+
+.gst-chart__line {
+  top: 15.5%;
+  left: 4.35%;
+  width: 92.39%;
+}
+
+.gst-chart__moving-line {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  animation: gst-line-draw 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.gst-chart__months {
+  position: absolute;
+  right: 3.26%;
+  bottom: 0;
+  left: 4.35%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #73847b;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.gst-insight {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-left: 3px solid #15b5c1;
+  border-radius: 4px;
+  background: #edf7f2;
+  padding: 13px 14px 14px 17px;
+}
+
+.gst-insight strong {
+  color: #15b5c1;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18.15px;
+}
+
+.gst-insight p {
+  margin: 0;
+  color: #152e37;
+  font-size: 11px;
+  line-height: 18.15px;
+}
+
+.gst-roles {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(4, 1fr);
+  align-items: center;
+  gap: 16px;
+  width: min(1280px, 94%);
+  min-height: 52px;
+  margin: 30px auto 0;
+  border-top: 1px solid #dce5e4;
+  border-bottom: 1px solid #dce5e4;
+  padding: 0 50px;
+  color: #63787e;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 12px;
+  line-height: 19.8px;
+  text-align: center;
+}
+
+.gst-roles strong {
+  color: #15b5c1;
+  font-size: 13px;
+  text-align: left;
+}
+
+.gst-understanding {
+  padding: 48px 24px 74px;
+  background: #fff;
+  text-align: center;
+}
+
+.gst-understanding__eyebrow {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bae6fd;
+  border-radius: 9999px;
+  background: #f0f9ff;
+  padding: 5px 15px;
+  color: #15b5c1;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 18.15px;
+  text-transform: uppercase;
+}
+
+.gst-understanding h2 {
+  max-width: 100%;
+  margin: 34px auto 0;
+  color: #0f172a;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  line-height: 40px;
+}
+
+.gst-understanding h2 span {
+  color: #1a80e6;
+}
+
+.gst-understanding__intro {
+  margin: 24px 0 0;
+  color: #63787e;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26.4px;
+}
+
+.gst-understanding__cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 27px;
+  width: min(1145px, 100%);
+  margin: 43px auto 0;
+  text-align: left;
+}
+
+.gst-understanding__card {
+  min-width: 0;
+  min-height: 397px;
+  border: 1px solid rgba(95, 163, 255, 0.9);
+  border-radius: 22.388px;
+  background: #fff;
+  padding: 29px 29px 30px;
+  box-shadow: 0 0.933px 0.933px rgba(0, 0, 0, 0.05);
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  animation: gst-card-reveal 620ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--card-index, 0) * 110ms);
+}
+
+.gst-understanding__card:hover {
+  border-color: #15b5c1;
+  box-shadow: 0 0 12px rgba(21, 181, 193, 0.5);
+}
+
+.gst-understanding__card:hover h3 {
+  color: #15b5c1;
+}
+
+.gst-understanding__widget {
+  position: relative;
+  width: 100%;
+  height: 119px;
+  overflow: hidden;
+  border: 1px solid #abc5e7;
+  border-radius: 14.925px;
+  background: #fff;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.gst-understanding__card:hover .gst-understanding__widget {
+  border-color: #15b5c1;
+  box-shadow: 0 0 10px rgba(21, 181, 193, 0.55);
+}
+
+.gst-understanding__image {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  opacity: 0.7;
+  object-fit: fill;
+  transition: opacity 220ms ease;
+}
+
+.gst-understanding__image--diagram {
+  top: -14.84%;
+  left: -4.08%;
+  width: 107.56%;
+  height: 124.98%;
+}
+
+.gst-understanding__image--coverage {
+  top: -45.68%;
+  left: -7.79%;
+  width: 113.99%;
+  height: 190.97%;
+}
+
+.gst-understanding__image--multi-signal {
+  top: -48.81%;
+  left: -3.98%;
+  width: 107.8%;
+  height: 192.71%;
+}
+
+/* The Figma widget artwork is deliberately cropped within each frame. Keep its
+   frame geometry separate from the supplied art so it remains aligned. */
+.gst-understanding__widget img {
+  border: 0;
+  border-radius: 0;
+}
+
+.gst-understanding__phase {
+  margin-top: 29px;
+  border-bottom: 1px solid #ccd7e2;
+  padding: 0 0 8px;
+  color: #0284c7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 590;
+  line-height: 15px;
+}
+
+.gst-understanding__card h3 {
+  margin: 9px 0 10px;
+  color: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26.119px;
+}
+
+.gst-understanding__card p {
+  margin: 0;
+  color: #0c2219;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+@keyframes gst-card-reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gst-line-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 1100px) {
+  .gst-hero {
+    padding-top: 38px;
+  }
+
+  .gst-hero__content {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    width: min(1160px, 84%);
+    gap: 45px;
+  }
+
+  .gst-hero h1 {
+    font-size: clamp(34px, 3.62vw, 40px);
+  }
+
+  .gst-hero__accent {
+    white-space: normal;
+  }
+
+  .gst-hero__actions {
+    margin-top: 54px;
+  }
+
+  .gst-hero__eyebrow {
+    min-height: 29px;
+    margin-bottom: 31px;
+    padding: 4px 12px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .gst-hero__description {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .gst-chart {
+    height: 127px;
+  }
+
+  .gst-dashboard {
+    border-radius: 9px;
+  }
+
+  .gst-dashboard__topbar {
+    min-height: 33px;
+    padding: 0 13px;
+    font-size: 7px;
+    line-height: 12px;
+  }
+
+  .gst-dashboard__body {
+    gap: 11px;
+    padding: 14px;
+  }
+
+  .gst-dashboard__company {
+    min-height: 14px;
+    font-size: 8.5px;
+    line-height: 14px;
+  }
+
+  .gst-dashboard__badge {
+    padding: 2px 6px;
+    font-size: 7px;
+    line-height: 12px;
+  }
+
+  .gst-dashboard__stat span {
+    font-size: 7px;
+    line-height: 12px;
+  }
+
+  .gst-dashboard__stat strong {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .gst-insight {
+    gap: 2px;
+    padding: 9px 10px 10px 12px;
+  }
+
+  .gst-insight strong,
+  .gst-insight p {
+    font-size: 8px;
+    line-height: 13px;
+  }
+
+  .gst-button {
+    min-width: 0;
+    min-height: 34px;
+    flex: 0 1 144px;
+    border-radius: 6.3px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+
+  .gst-roles {
+    min-height: 37px;
+    margin-top: 21px;
+    padding: 0 35px;
+    gap: 10px;
+    font-size: 8.5px;
+    line-height: 14px;
+  }
+
+  .gst-roles strong {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gst-hero {
+    padding: 44px 20px 28px;
+  }
+
+  .gst-hero__content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+    width: min(640px, 100%);
+  }
+
+  .gst-hero__eyebrow {
+    margin-bottom: 22px;
+    font-size: 14px;
+    min-height: 38px;
+  }
+
+  .gst-hero h1 {
+    font-size: clamp(35px, 8vw, 48px);
+    letter-spacing: -1.1px;
+  }
+
+  .gst-hero__description {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .gst-hero__desktop-break {
+    display: none;
+  }
+
+  .gst-hero__actions {
+    margin-top: 30px;
+  }
+
+  .gst-button {
+    flex-basis: 0;
+    min-width: 0;
+    min-height: 44px;
+    flex-grow: 1;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .gst-dashboard__body {
+    gap: 13px;
+    padding: 16px;
+  }
+
+  .gst-dashboard__stat span {
+    font-size: 9px;
+    white-space: normal;
+  }
+
+  .gst-dashboard__stat strong {
+    font-size: clamp(16px, 4.8vw, 22px);
+  }
+
+  .gst-chart {
+    height: clamp(150px, 48vw, 179px);
+  }
+
+  .gst-roles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 18px;
+    margin-top: 28px;
+    padding: 15px 4px;
+    text-align: left;
+  }
+
+  .gst-roles strong {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 1000px) {
+  .gst-understanding__cards {
+    gap: 16px;
+  }
+
+  .gst-understanding__card {
+    padding: 22px;
+  }
+
+  .gst-understanding__card h3 {
+    font-size: 16px;
+  }
+
+  .gst-understanding__card p {
+    font-size: 13px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 760px) {
+  .gst-understanding {
+    padding: 48px 20px 56px;
+  }
+
+  .gst-understanding h2 {
+    max-width: 620px;
+    margin-top: 20px;
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.18;
+  }
+
+  .gst-understanding__intro {
+    max-width: 520px;
+    margin: 15px auto 0;
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .gst-understanding__desktop-break {
+    display: none;
+  }
+
+  .gst-understanding__cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    width: min(440px, 100%);
+    margin-top: 38px;
+  }
+
+  .gst-understanding__card {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .gst-understanding__widget {
+    height: 150px;
+  }
+}
+
+@media (max-width: 390px) {
+  .gst-hero__actions {
+    flex-direction: column;
+  }
+
+  .gst-button {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .gst-dashboard__topbar {
+    padding: 0 12px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gst-chart__moving-line {
+    animation: none;
+    stroke-dasharray: 1 0;
+    stroke-dashoffset: 0;
+  }
+
+  .gst-button {
+    transition: none;
+  }
+
+  .gst-understanding__card {
+    animation: none;
+    transition: none;
+  }
+
+  .gst-understanding__card:hover {
+    border-color: rgba(95, 163, 255, 0.9);
+    box-shadow: 0 0.933px 0.933px rgba(0, 0, 0, 0.05);
+  }
+
+  .gst-understanding__card:hover h3 {
+    color: #0f172a;
+  }
+
+  .gst-understanding__card:hover .gst-understanding__widget {
+    border-color: #abc5e7;
+    box-shadow: none;
+  }
+
+  .gst-understanding__image {
+    transition: none;
+  }
+
+  .gst-understanding__widget {
+    transition: none;
+  }
+}

@@ -1,0 +1,1316 @@
+.gst-scroll-reveal.is-motion-ready [data-gst-reveal-item] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 650ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gst-explorer,
+.gst-role-section,
+.gst-coverage-section,
+.gst-cross-signal,
+.gst-journey,
+.gst-principles,
+.gst-faq {
+  padding: 70px 24px 76px;
+  background: #fff;
+}
+
+.gst-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gst-section-eyebrow {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #bae6fd;
+  border-radius: 9999px;
+  background: #f0f9ff;
+  padding: 4px 15px;
+  color: #15b5c1;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.gst-section-eyebrow--blue {
+  color: #0284c7;
+}
+
+.gst-section-heading h2 {
+  margin: 18px 0 0;
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.72px;
+  line-height: 1.22;
+}
+
+.gst-section-heading h2 span {
+  color: #15b5c1;
+}
+
+.gst-section-heading p {
+  max-width: 960px;
+  margin: 17px 0 0;
+  color: #63787e;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26.4px;
+}
+
+.gst-explorer {
+  padding-top: 68px;
+}
+
+.gst-explorer .gst-section-heading h2 {
+  margin-top: 19px;
+  color: #0f172a;
+  font-size: 42px;
+  letter-spacing: -1.8px;
+  white-space: nowrap;
+}
+
+.gst-explorer .gst-section-heading h2 span {
+  color: #41c3cd;
+}
+
+.gst-explorer__panel {
+  overflow: hidden;
+  width: min(1180px, 100%);
+  margin: 65px auto 0;
+  border: 1px solid #dce5e4;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(21, 56, 44, 0.03);
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-explorer__topline,
+.gst-explorer__toolbar {
+  display: flex;
+  min-height: 88px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #dce5e4;
+  padding: 22px 28px;
+}
+
+.gst-explorer__topline h3,
+.gst-coverage__top h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  line-height: 24px;
+}
+
+.gst-explorer__topline p {
+  margin: 4px 0 0;
+  color: #63787e;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gst-segment {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  border-radius: 7px;
+  background: #edf2ee;
+  padding: 4px;
+}
+
+.gst-segment button {
+  min-height: 35px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  padding: 7px 14px;
+  color: #63787e;
+  font: 400 12px/20px var(--font-stack-poppins), Poppins, sans-serif;
+  cursor: pointer;
+  transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.gst-segment button.is-active {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(21, 56, 44, 0.08);
+  color: #15b5c1;
+}
+
+.gst-segment button:focus-visible,
+.gst-coverage select:focus-visible,
+.gst-explorer__point:focus-visible {
+  outline: 3px solid rgba(21, 181, 193, 0.32);
+  outline-offset: 2px;
+}
+
+.gst-explorer__toolbar {
+  min-height: 73px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.gst-explorer__tag {
+  border-radius: 20px;
+  background: #ecf9fa;
+  padding: 3px 9px;
+  color: #15b5c1;
+  font-size: 10px;
+  line-height: 16.5px;
+  white-space: nowrap;
+}
+
+.gst-explorer__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 224px;
+  min-height: 400px;
+}
+
+.gst-explorer__chart-area {
+  min-width: 0;
+  padding: 24px 28px 12px;
+}
+
+.gst-explorer__chart-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 11px;
+}
+
+.gst-explorer__chart-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #63787e;
+  white-space: nowrap;
+}
+
+.sales-dot,
+.purchase-dot {
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: #15b5c1;
+}
+
+.purchase-dot {
+  background: #b9e9ec;
+}
+
+.gst-explorer__chart {
+  display: block;
+  width: 100%;
+  height: 350px;
+  margin-top: 12px;
+  overflow: visible;
+}
+
+.gst-explorer__chart line {
+  stroke: #dce5e4;
+  stroke-width: 1;
+}
+
+.gst-explorer__chart text {
+  fill: #75877d;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 11px;
+}
+
+.gst-explorer__chart .gst-explorer__month {
+  font-size: 12px;
+}
+
+.gst-chart-sales-line,
+.gst-chart-purchase-line {
+  fill: none;
+  stroke: #15b5c1;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: points 350ms ease;
+}
+
+.gst-chart-purchase-line {
+  stroke: #b9e9ec;
+  stroke-width: 3;
+}
+
+.gst-explorer__point {
+  fill: #15b5c1;
+  stroke: #fff;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 160ms ease, fill 160ms ease;
+}
+
+.gst-explorer__point:hover,
+.gst-explorer__point.is-selected {
+  r: 7;
+  fill: #06aebb;
+}
+
+.gst-explorer__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #e4ece9;
+  padding: 24px;
+}
+
+.gst-explorer__date {
+  color: #15b5c1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.gst-explorer__detail strong {
+  margin-top: 8px;
+  color: #152e37;
+  font-size: 28px;
+  line-height: 1.25;
+}
+
+.gst-explorer__caption {
+  margin-top: 6px;
+  color: #63787e;
+  font-size: 11px;
+}
+
+.gst-explorer__detail > p {
+  margin: 12px 0 15px;
+  color: #63787e;
+  font-size: 11px;
+  line-height: 18px;
+}
+
+.gst-explorer__prompt {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 3px solid #15b5c1;
+  border-radius: 4px;
+  background: #b9e9ec;
+  padding: 12px;
+  color: #152e37;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.gst-explorer__prompt b {
+  color: #15b5c1;
+  font-size: 9px;
+}
+
+.gst-explorer__note {
+  margin: 0;
+  border-top: 1px solid #dce5e4;
+  padding: 16px 28px;
+  color: #63787e;
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.gst-role-section {
+  padding-top: 70px;
+}
+
+.gst-role-section .gst-section-heading h2 {
+  max-width: 900px;
+  color: #0f172a;
+  font-size: 36px;
+}
+
+.gst-role-section .gst-section-heading h2 span {
+  color: #15b5c1;
+}
+
+.gst-role-section .gst-section-heading p {
+  max-width: 950px;
+  color: #64748b;
+}
+
+.gst-role-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 26px auto 18px;
+}
+
+.gst-role-tabs button {
+  min-width: 178px;
+  min-height: 46px;
+  border: 0;
+  border-radius: 12px;
+  background: #e2e8f0;
+  padding: 10px 18px;
+  color: #64748b;
+  color: #64748b;
+  font: 700 16px/35.55px var(--font-stack-jakarta), sans-serif;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.gst-role-tabs button:hover {
+  transform: translateY(-2px);
+}
+
+.gst-role-tabs button:not(.is-active):hover {
+  background: #f0f9ff;
+  color: #15b5c1;
+  box-shadow: 0 3px 12px rgba(21, 181, 193, 0.12);
+}
+
+.gst-role-tabs button.is-active {
+  background: #15b5c1;
+  color: #fff;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-weight: 600;
+}
+
+.gst-role-panel {
+  width: min(964px, 100%);
+  min-height: 417px;
+  margin: 18px auto 0;
+  border-radius: 14px;
+  background: #e6f8fa;
+  padding: 40px 62px;
+  color: #0f172a;
+  animation: gst-role-panel-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes gst-role-panel-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gst-role-panel__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #dce5e4;
+  padding-bottom: 18px;
+}
+
+.gst-role-panel__head > div > span {
+  color: #0284c7;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+}
+
+.gst-role-panel__head h3 {
+  margin: 8px 0 0;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 35.55px;
+}
+
+.gst-role-panel__icon {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #bae6fd;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.gst-role-panel__intro {
+  max-width: 570px;
+  margin: 24px 14px 14px;
+  color: #475569;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 22.22px;
+}
+
+.gst-role-panel ul {
+  display: grid;
+  gap: 8px;
+  margin: 14px 14px 20px;
+  padding: 0;
+  list-style: none;
+  color: #15b5c1;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 14px;
+  line-height: 23.1px;
+}
+
+.gst-role-panel li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 12px;
+  background: #15b5c1;
+}
+
+.gst-role-panel__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 14px 28px 37px;
+}
+
+.gst-role-panel__chips span {
+  border: 1px solid #15b5c1;
+  border-radius: 999px;
+  background: #fff;
+  padding: 5px 12px;
+  color: #15b5c1;
+  font-size: 10px;
+  line-height: 16px;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.gst-role-panel__chips span:hover {
+  transform: translateY(-2px);
+  border-color: #15b5c1;
+  background: #15b5c1;
+  color: #fff;
+}
+
+.gst-role-panel small {
+  display: block;
+  margin: 0 14px 0 39px;
+  color: #27272a;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 10px;
+}
+
+.gst-coverage-section .gst-section-heading h2 {
+  max-width: 850px;
+}
+
+.gst-coverage {
+  display: grid;
+  grid-template-columns: 206px minmax(0, 1fr);
+  width: min(1160px, 100%);
+  min-height: 518px;
+  overflow: hidden;
+  margin: 48px auto 0;
+  border: 1px solid #15b5c1;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-coverage__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-right: 1px solid #15b5c1;
+  background: #e8f8f9;
+  padding: 28px 12px;
+}
+
+.gst-coverage__nav strong {
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+.gst-coverage__nav > span {
+  padding: 0 10px;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.gst-coverage__nav a {
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: #64748b;
+  font-size: 11px;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.gst-coverage__nav a:hover,
+.gst-coverage__nav a.is-active {
+  background: #15b5c1;
+  color: #fff;
+}
+
+.gst-coverage__main {
+  min-width: 0;
+  padding: 28px 22px 22px;
+}
+
+.gst-coverage__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gst-coverage__top label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #63787e;
+  font-size: 11px;
+}
+
+.gst-coverage select {
+  max-width: 190px;
+  border: 1px solid #d2dfd4;
+  border-radius: 5px;
+  background: #fff;
+  padding: 8px 10px;
+  color: #152e37;
+  font: 400 11px var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-coverage__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gst-coverage__stats > div {
+  display: flex;
+  min-height: 74px;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid #15b5c1;
+  border-radius: 11px;
+  background: #e8f8f9;
+  padding: 12px 16px;
+  box-shadow: 0 2px 5px rgba(21, 181, 193, 0.18);
+}
+
+.gst-coverage__stats span {
+  color: #0284c7;
+  font-size: 11px;
+}
+
+.gst-coverage__stats strong {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.gst-coverage__table-wrap {
+  overflow-x: auto;
+  margin-top: 9px;
+}
+
+.gst-coverage table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.gst-coverage th {
+  background: #15b5c1;
+  padding: 13px 12px;
+  color: #fff;
+  font-size: 10px;
+}
+
+.gst-coverage td {
+  border-bottom: 1px solid #dce5e4;
+  padding: 13px 12px;
+}
+
+.gst-status {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 9px;
+}
+
+.gst-status--ready { background: #d5f4ec; color: #12806a; }
+.gst-status--gap { background: #fff0df; color: #b96b2c; }
+.gst-status--wait { background: #e7eef1; color: #63787e; }
+
+.gst-coverage__note {
+  margin: 15px 0 0;
+  color: #63787e;
+  font-size: 10px;
+}
+
+.gst-cross-signal {
+  padding-top: 76px;
+  padding-bottom: 76px;
+}
+
+.gst-cross-signal .gst-section-heading h2 {
+  margin-top: 16px;
+  color: #152e37;
+  letter-spacing: -0.9px;
+}
+
+.gst-cross-signal .gst-section-heading p {
+  margin-top: 8px;
+  color: #475569;
+  font-family: var(--font-stack-jakarta), sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.gst-cross-signal__board {
+  position: relative;
+  display: block;
+  width: min(1169px, 100%);
+  min-height: 504px;
+  margin: 48px auto 0;
+  border-radius: 20px;
+  background: #213242;
+  overflow: hidden;
+}
+
+.gst-cross-signal__axis {
+  position: absolute;
+  top: 24%;
+  bottom: 22%;
+  left: 50%;
+  width: 4px;
+  background: rgba(13, 162, 231, 0.92);
+}
+
+.gst-cross-signal__axis i {
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #213242;
+  border-radius: 50%;
+  background: #06a6e7;
+  transform: translateX(-50%);
+}
+
+.gst-cross-signal__axis i:nth-child(1) { top: 0; }
+.gst-cross-signal__axis i:nth-child(2) { top: 33%; }
+.gst-cross-signal__axis i:nth-child(3) { top: 66%; }
+.gst-cross-signal__axis i:nth-child(4) { bottom: 0; }
+
+.gst-signal-card {
+  position: absolute;
+  z-index: 1;
+  width: 30.1%;
+  min-height: 110px;
+  border: 1px solid rgba(248, 250, 252, 0.1);
+  border-radius: 12px;
+  background: #2c3c4b;
+  padding: 13px 20px;
+  color: #fff;
+  backdrop-filter: blur(2px);
+  transition: border-color 220ms ease, background-color 220ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+
+.gst-signal-card:hover {
+  transform: translateY(-4px) scale(1.015);
+  border-color: #15b5c1;
+  background: #15b5c1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 20px rgba(21, 181, 193, 0.35);
+}
+
+.gst-signal-card:nth-of-type(2) { transition-delay: 80ms; }
+.gst-signal-card:nth-of-type(3) { transition-delay: 160ms; }
+.gst-signal-card:nth-of-type(4) { transition-delay: 240ms; }
+
+.gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 560ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1), border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+
+.gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card.is-visible:hover {
+  transform: translateY(-4px) scale(1.015);
+  border-color: #15b5c1;
+  background: #15b5c1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 20px rgba(21, 181, 193, 0.35);
+}
+
+.gst-signal-card--left { left: 15.4%; }
+.gst-signal-card--right { right: 15.8%; }
+.gst-signal-card:nth-of-type(1) { top: 13.7%; min-height: 113px; }
+.gst-signal-card:nth-of-type(2) { top: 29.8%; min-height: 128px; }
+.gst-signal-card:nth-of-type(3) { top: 46.4%; min-height: 137px; }
+.gst-signal-card:nth-of-type(4) { top: 66.2%; min-height: 117px; }
+
+.gst-signal-card--left::after,
+.gst-signal-card--right::before {
+  position: absolute;
+  top: 50%;
+  width: 38px;
+  height: 1px;
+  background: rgba(13, 162, 231, 0.92);
+  content: "";
+}
+
+.gst-signal-card--left::after { right: -40px; }
+.gst-signal-card--right::before { left: -40px; }
+
+.gst-signal-card > span {
+  display: block;
+  color: #fff;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  line-height: 16px;
+}
+
+.gst-signal-card h3 {
+  margin: 3px 0 7px;
+  color: #fff;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.gst-signal-card p {
+  margin: 0;
+  color: #e5ece9;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.gst-signal-card:hover h3 { color: #fff; }
+
+.gst-journey {
+  padding-top: 70px;
+  padding-bottom: 84px;
+}
+
+.gst-journey .gst-section-heading h2 {
+  margin-top: 20px;
+  color: #152e37;
+}
+
+.gst-journey .gst-section-heading h2 span {
+  color: #15b5c1;
+}
+
+.gst-journey__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px;
+  width: min(1280px, 100%);
+  margin: 54px auto 0;
+}
+
+.gst-journey__card {
+  position: relative;
+  min-height: 370px;
+  overflow: hidden;
+  border: 1px solid #8de3e9;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fbfdfd 0%, #f5fbfb 100%);
+  padding: 28px 16px;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, border-color 260ms ease, background 260ms ease;
+}
+
+.gst-journey__card::before {
+  content: "";
+  position: absolute;
+  inset: auto -40px -60px auto;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(21, 181, 193, 0.08);
+  transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.gst-journey__card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: #15b5c1;
+  box-shadow: 0 20px 40px rgba(21, 181, 193, 0.12), 0 8px 20px rgba(21, 61, 72, 0.08);
+  background: linear-gradient(180deg, #ffffff 0%, #f2fbfc 100%);
+}
+
+.gst-journey__card:hover::before {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.gst-journey__icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 80px;
+  height: 80px;
+  place-items: center;
+  border: 1px solid rgba(21, 181, 193, 0.18);
+  border-radius: 22px;
+  background: linear-gradient(180deg, #15b5c1 0%, #0d93a0 100%);
+  box-shadow: 0 16px 28px rgba(21, 181, 193, 0.22);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+}
+
+.gst-journey__card:hover .gst-journey__icon {
+  transform: translateY(-4px) rotate(-4deg) scale(1.04);
+  box-shadow: 0 18px 30px rgba(21, 181, 193, 0.28);
+}
+
+.gst-journey__icon img {
+  filter: brightness(0) invert(1);
+}
+
+.gst-journey__card h3 {
+  position: relative;
+  z-index: 1;
+  min-height: 54px;
+  margin: 70px 0 20px;
+  border-bottom: 1px solid #15b5c1;
+  padding-bottom: 16px;
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  transition: color 220ms ease;
+}
+
+.gst-journey__card:hover h3 {
+  color: #0d7e8e;
+}
+
+.gst-journey__card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #63787e;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 21px;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.gst-journey__card:hover p {
+  color: #314d57;
+  transform: translateY(-2px);
+}
+
+.gst-monitoring {
+  min-height: 550px;
+  background: #2c3c4b;
+  padding: 90px 24px 70px;
+  color: #fff;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-monitoring__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 70px;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.gst-monitoring__copy > span {
+  color: #06f;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.gst-monitoring h2 {
+  margin: 12px 0 14px;
+  color: #fff;
+  font-size: 42px;
+  letter-spacing: -1.8px;
+  line-height: 1.18;
+}
+
+.gst-monitoring h2 em {
+  color: #06f;
+  font-style: normal;
+}
+
+.gst-monitoring__copy > p {
+  max-width: 550px;
+  margin: 0;
+  color: #e5ece9;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.gst-monitoring__copy small {
+  display: block;
+  margin: 20px 0;
+  color: #e5ece9;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gst-monitoring__prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.gst-monitoring__prompt {
+  display: flex;
+  min-height: 93px;
+  align-items: flex-start;
+  gap: 16px;
+  border: 1px solid #d2dfd4;
+  border-radius: 9px;
+  background: #fff;
+  padding: 22px 24px;
+  color: #152e37;
+  transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease;
+}
+
+.gst-monitoring__prompt:hover {
+  border-color: #fff;
+  background: #15b5c1;
+  color: #fff;
+}
+
+.gst-monitoring__dot {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+  margin-top: 7px;
+  border-radius: 50%;
+  transition: background-color 240ms ease;
+}
+
+.gst-monitoring__dot--orange { background: #bf6d32; }
+.gst-monitoring__dot--slate { background: #7e96a1; }
+.gst-monitoring__dot--green { background: #599f82; }
+
+.gst-monitoring__prompt:hover .gst-monitoring__dot { background: #fff; }
+
+.gst-monitoring__prompt h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+  line-height: 19px;
+  transition: color 240ms ease;
+}
+
+.gst-monitoring__prompt:hover h3 { color: #fff; }
+
+.gst-monitoring__prompt p {
+  margin: 0;
+  color: #63787e;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  transition: color 240ms ease, font-weight 240ms ease;
+}
+
+.gst-monitoring__prompt:hover p {
+  color: #fff;
+  font-weight: 600;
+}
+
+.gst-principles {
+  padding-top: 68px;
+  padding-bottom: 78px;
+}
+
+.gst-principles .gst-section-heading h2 {
+  color: #152e37;
+  font-size: 36px;
+  letter-spacing: -0.846px;
+}
+
+.gst-principles .gst-section-heading h2 span {
+  color: #0284c7;
+}
+
+.gst-principles .gst-section-heading p {
+  margin-top: 22px;
+  color: #0c2219;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", var(--font-inter), Arial, sans-serif;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.gst-principles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: 250px 270px;
+  gap: 20px;
+  width: min(1160px, 100%);
+  margin: 25px auto 0;
+}
+
+.gst-principles__column { display: contents; }
+
+.gst-principles__column--01 .gst-principles__scene { grid-column: 1; grid-row: 1; }
+.gst-principles__column--02 .gst-principles__scene { grid-column: 2; grid-row: 2; }
+.gst-principles__column--03 .gst-principles__scene { grid-column: 3; grid-row: 1; }
+.gst-principles__column--01 .gst-principles__card { grid-column: 1; grid-row: 2; }
+.gst-principles__column--02 .gst-principles__card { grid-column: 2; grid-row: 1; }
+.gst-principles__column--03 .gst-principles__card { grid-column: 3; grid-row: 2; }
+
+.gst-principles__scene {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0c1b27;
+}
+
+.gst-principles__scene img {
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.gst-principles__scene:hover img {
+  transform: scale(1.04);
+}
+
+.gst-principles__card {
+  overflow: hidden;
+  border: 1px solid #c4c0c0;
+  border-radius: 20px;
+  background: #fff;
+  padding: 6px 16px 15px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.gst-principles__card:hover {
+  transform: translateY(-4px);
+  border-color: #15b5c1;
+  box-shadow: 0 10px 25px rgba(21, 181, 193, 0.13);
+}
+
+.gst-principles__visual {
+  display: block;
+  width: 100%;
+  height: 121px;
+  object-fit: contain;
+}
+
+.gst-principles__card > span {
+  display: block;
+  margin-top: 7px;
+  color: #0284c7;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gst-principles__card h3 {
+  margin: 5px 0 10px;
+  color: #152e37;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+  font-size: 18px;
+  letter-spacing: -0.4px;
+  line-height: 24px;
+}
+
+.gst-principles__card p {
+  margin: 0;
+  color: #63787e;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+.gst-faq {
+  padding-top: 74px;
+  padding-bottom: 90px;
+}
+
+.gst-faq .gst-section-heading h2 {
+  margin-top: 20px;
+}
+
+.gst-faq .gst-section-heading h2 span {
+  color: #15b5c1;
+}
+
+.gst-faq__list {
+  width: min(961px, 100%);
+  margin: 62px auto 0;
+  font-family: var(--font-stack-poppins), Poppins, sans-serif;
+}
+
+.gst-faq details {
+  border-top: 1px solid #dce5e4;
+  padding: 22px 0;
+}
+
+.gst-faq details:last-child {
+  border-bottom: 1px solid #dce5e4;
+}
+
+.gst-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #152e37;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.gst-faq summary::-webkit-details-marker { display: none; }
+.gst-faq summary b { color: #006d64; font-size: 23px; font-weight: 400; transition: transform 200ms ease; }
+.gst-faq details[open] summary b { transform: rotate(45deg); }
+
+.gst-faq details > p {
+  max-width: 850px;
+  margin: 12px 36px 0 0;
+  color: #63787e;
+  font-size: 14px;
+  line-height: 24px;
+  animation: gst-faq-open 220ms ease both;
+}
+
+@keyframes gst-faq-open {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1100px) {
+  .gst-explorer .gst-section-heading h2 { white-space: normal; }
+  .gst-explorer__body { grid-template-columns: minmax(0, 1fr) 205px; }
+  .gst-explorer__chart-area { padding-right: 18px; padding-left: 18px; }
+  .gst-coverage { grid-template-columns: 175px minmax(0, 1fr); }
+  .gst-coverage__main { padding-right: 16px; padding-left: 16px; }
+  .gst-journey__grid { gap: 16px; }
+  .gst-principles__grid { gap: 16px; }
+  .gst-principles__card { padding-right: 12px; padding-left: 12px; }
+}
+
+@media (max-width: 820px) {
+  .gst-explorer,
+  .gst-role-section,
+  .gst-coverage-section,
+  .gst-cross-signal,
+  .gst-journey,
+  .gst-principles,
+  .gst-faq { padding: 52px 20px 60px; }
+
+  .gst-section-heading h2,
+  .gst-explorer .gst-section-heading h2,
+  .gst-role-section .gst-section-heading h2,
+  .gst-principles .gst-section-heading h2 { font-size: clamp(28px, 5.8vw, 36px); }
+  .gst-section-heading p { font-size: 15px; }
+  .gst-section-break { display: none; }
+  .gst-explorer__panel { margin-top: 38px; }
+  .gst-explorer__body { grid-template-columns: 1fr; }
+  .gst-explorer__detail { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px; }
+  .gst-explorer__detail > p, .gst-explorer__prompt { grid-column: 1 / -1; }
+  .gst-explorer__chart { height: 290px; }
+  .gst-role-panel { width: min(964px, 100%); margin: 18px auto 0; padding: 30px 24px; }
+  .gst-coverage { grid-template-columns: 1fr; }
+  .gst-coverage__nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; border-right: 0; border-bottom: 1px solid #15b5c1; padding: 14px; }
+  .gst-coverage__nav strong, .gst-coverage__nav > span { grid-column: 1 / -1; }
+  .gst-coverage__main { padding: 20px 14px; }
+  .gst-cross-signal__board { min-height: 530px; }
+  .gst-journey__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gst-journey__card { min-height: 320px; }
+  .gst-journey__card h3 { margin-top: 44px; }
+  .gst-monitoring { min-height: 0; padding: 58px 20px; }
+  .gst-monitoring__inner { grid-template-columns: 1fr; gap: 36px; width: min(620px, 100%); }
+  .gst-monitoring h2 { font-size: clamp(34px, 7vw, 42px); }
+  .gst-principles__grid { grid-template-rows: 220px 240px; }
+  .gst-principles__card h3 { font-size: 16px; }
+  .gst-principles__card p { font-size: 12px; line-height: 20px; }
+}
+
+@media (max-width: 560px) {
+  .gst-explorer__topline,
+  .gst-explorer__toolbar { align-items: flex-start; flex-direction: column; }
+  .gst-explorer__chart-heading { align-items: flex-start; flex-direction: column; }
+  .gst-explorer__chart { height: 230px; }
+  .gst-explorer__chart .gst-explorer__month { font-size: 9px; }
+  .gst-explorer__note { padding: 14px 18px; }
+  .gst-role-tabs { gap: 10px; }
+  .gst-role-tabs button { min-width: 0; flex: 1; padding: 9px 8px; font-size: 13px; }
+  .gst-role-panel__intro { margin-right: 0; margin-left: 0; }
+  .gst-role-panel ul, .gst-role-panel__chips, .gst-role-panel small { margin-right: 0; margin-left: 0; }
+  .gst-coverage__top { align-items: flex-start; flex-direction: column; }
+  .gst-coverage__stats { grid-template-columns: 1fr; }
+  .gst-cross-signal__board { display: flex; min-height: 0; flex-direction: column; gap: 14px; padding: 24px; }
+  .gst-cross-signal__axis { display: none; }
+  .gst-signal-card,
+  .gst-signal-card--left,
+  .gst-signal-card--right { position: relative; inset: auto; width: 100%; min-height: 0 !important; }
+  .gst-signal-card::before,
+  .gst-signal-card::after { display: none; }
+  .gst-journey__grid { grid-template-columns: 1fr; width: min(380px, 100%); }
+  .gst-journey__card { min-height: 280px; }
+  .gst-journey__card h3 { margin-top: 36px; }
+  .gst-principles__grid { grid-template-columns: 1fr; grid-template-rows: auto; width: min(400px, 100%); }
+  .gst-principles__column { display: flex; flex-direction: column; gap: 0; }
+  .gst-principles__column--01 .gst-principles__scene,
+  .gst-principles__column--02 .gst-principles__scene,
+  .gst-principles__column--03 .gst-principles__scene,
+  .gst-principles__column--01 .gst-principles__card,
+  .gst-principles__column--02 .gst-principles__card,
+  .gst-principles__column--03 .gst-principles__card { grid-column: auto; grid-row: auto; }
+  .gst-principles__scene { height: 180px; }
+  .gst-principles__card { min-height: 250px; }
+  .gst-faq__list { margin-top: 40px; }
+  .gst-faq summary { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gst-scroll-reveal.is-motion-ready [data-gst-reveal-item] { opacity: 1; transform: none; transition: none; }
+  .gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card,
+  .gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card.is-visible,
+  .gst-scroll-reveal.is-motion-ready [data-gst-reveal-item].gst-signal-card.is-visible:hover { opacity: 1; transform: none; transition: none; }
+  .gst-role-panel { animation: none; }
+  .gst-segment button,
+  .gst-role-tabs button,
+  .gst-coverage__nav a,
+  .gst-signal-card,
+  .gst-journey__card,
+  .gst-monitoring__prompt,
+  .gst-monitoring__prompt h3,
+  .gst-monitoring__prompt p,
+  .gst-monitoring__dot,
+  .gst-principles__scene img,
+  .gst-principles__card,
+  .gst-faq summary b { transition: none; }
+  .gst-role-tabs button:hover,
+  .gst-role-tabs button:not(.is-active):hover,
+  .gst-signal-card:hover,
+  .gst-journey__card:hover,
+  .gst-monitoring__prompt:hover,
+  .gst-principles__scene:hover img,
+  .gst-principles__card:hover { transform: none; }
+  .gst-faq details > p { animation: none; }
+}

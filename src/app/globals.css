@@ -115,6 +115,7 @@ html {
 
     /* Poppins stack — uses `--font-poppins` from `next/font` on `<html>` */
     --font-stack-poppins: var(--font-poppins), "Poppins", ui-sans-serif, system-ui, sans-serif;
+    --font-stack-jakarta: var(--font-jakarta), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   }
 }
 

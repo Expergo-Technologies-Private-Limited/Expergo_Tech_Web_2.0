@@ -64,7 +64,7 @@
 
 
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import { Suspense } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
@@ -95,6 +95,13 @@ const poppins = Poppins({
   adjustFontFallback: true,
 });
 
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-jakarta",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
 export const metadata: Metadata = {
   title: "EXPERGO — Continuous Portfolio Risk Control",
   description:
@@ -109,7 +116,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable}`}
+      className={`${inter.variable} ${poppins.variable} ${jakarta.variable}`}
     >
       <body className={`${inter.className} font-sans`}>
         <AntdRegistry>

@@ -4,6 +4,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useState,
   type ReactNode,
 } from "react";
@@ -37,6 +38,20 @@ export function BookDemoProvider({ children }: { children: ReactNode }) {
     setOpen(true);
   }, []);
   const closeBookDemo = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    const openFromHash = () => {
+      if (window.location.hash === "#book-demo") {
+        openBookDemo();
+      } else if (window.location.hash === "#executive-brief") {
+        openExecutiveBrief();
+      }
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, [openBookDemo, openExecutiveBrief]);
 
   return (
     <BookDemoContext.Provider value={{ openBookDemo, openExecutiveBrief, closeBookDemo }}>
@@ -72,12 +87,12 @@ export function BookDemoButton({
     mode ?? (/brief|breif/i.test(getNodeText(children)) ? "brief" : "demo");
 
   return (
-    <button
-      type="button"
+    <a
+      href={resolvedMode === "brief" ? "#executive-brief" : "#book-demo"}
       onClick={resolvedMode === "brief" ? openExecutiveBrief : openBookDemo}
       className={className}
     >
       {children}
-    </button>
+    </a>
   );
 }
