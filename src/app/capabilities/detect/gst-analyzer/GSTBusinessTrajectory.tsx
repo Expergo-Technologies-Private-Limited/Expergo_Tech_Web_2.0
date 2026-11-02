@@ -1,41 +1,62 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import GSTScrollReveal from "./GSTScrollReveal";
 
 type Metric = "sales" | "growth" | "filing";
+type ChartMetric = {
+  sales: number[];
+  purchases: number[];
+  sales12: number[];
+  purchases12: number[];
+  labels: string[];
+  title: string;
+  max: number;
+  ticks: number[];
+  chartType: "line" | "growth" | "filing";
+};
 const months6 = ["Apr 26", "May 26", "Jun 26", "Jul 26", "Aug 26", "Sep 26"];
 const months12 = ["Oct 25", "Nov 25", "Dec 25", "Jan 26", "Feb 26", "Mar 26", ...months6];
 
-const datasets: Record<Metric, { sales: number[]; purchases: number[]; labels: string[]; title: string; unit: string }> = {
+const datasets: Record<Metric, ChartMetric> = {
   sales: {
     sales: [3.4, 3.8, 3.5, 4.5, 4.3, 5],
     purchases: [2.8, 3, 2.9, 3.3, 3.1, 3.7],
+    sales12: [2.7, 3.1, 3.3, 2.8, 3.6, 3.2, 3.4, 3.8, 3.5, 4.5, 4.3, 5],
+    purchases12: [2.1, 2.4, 2.5, 2, 2.7, 2.4, 2.8, 3, 2.9, 3.3, 3.1, 3.7],
     labels: months6,
     title: "Reported sales & purchases (₹ Cr)",
-    unit: "₹",
+    max: 6,
+    ticks: [6, 4.5, 3, 1.5, 0],
+    chartType: "line",
   },
   growth: {
-    sales: [2.8, 3.2, 1.9, 4.7, 3.7, 5.1],
-    purchases: [2.1, 2.8, 2.4, 3.5, 3.1, 4],
+    sales: [6, 12, 9, 15, 11, 19],
+    purchases: [4, 9, 6, 12, 8, 15],
+    sales12: [8, 6, 9, 7, 11, 10, 6, 12, 9, 15, 11, 19],
+    purchases12: [5, 4, 7, 6, 8, 7, 4, 9, 6, 12, 8, 15],
     labels: months6,
     title: "Reported sales growth (%)",
-    unit: "+",
+    max: 20,
+    ticks: [20, 15, 10, 5, 0],
+    chartType: "growth",
   },
   filing: {
-    sales: [5.2, 5.6, 5, 5.8, 4.6, 5.9],
-    purchases: [4.4, 4.6, 4.9, 4.5, 5, 4.8],
+    sales: [0, 0, 0, 0, 4.7, 0],
+    purchases: [0, 0, 0, 0, 0, 0],
+    sales12: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4.7, 0],
+    purchases12: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     labels: months6,
     title: "Filing timeliness (days after due date)",
-    unit: "day ",
+    max: 5,
+    ticks: [5, 4, 3, 2, 1, 0],
+    chartType: "filing",
   },
 };
 
-const twelveMonthSeries = [2.7, 3.1, 3.3, 2.8, 3.6, 3.2, 3.4, 3.8, 3.5, 4.5, 4.3, 5];
-
-function point(index: number, value: number, length: number) {
+function point(index: number, value: number, length: number, max: number) {
   const x = 52 + index * (610 / Math.max(1, length - 1));
-  const y = 270 - (value / 6) * 220;
+  const y = 270 - (value / max) * 220;
   return `${x},${y}`;
 }
 
@@ -45,12 +66,23 @@ export default function GSTBusinessTrajectory() {
   const [selected, setSelected] = useState(5);
   const data = datasets[metric];
   const labels = period === 6 ? data.labels : months12;
-  const sales = useMemo(() => period === 6 ? data.sales : twelveMonthSeries, [period, data.sales]);
-  const purchases = useMemo(() => period === 6 ? data.purchases : twelveMonthSeries.map((n, i) => n * (0.72 + (i % 3) * 0.035)), [period, data.purchases]);
-  const points1 = sales.map((n, i) => point(i, n, sales.length)).join(" ");
-  const points2 = purchases.map((n, i) => point(i, n, purchases.length)).join(" ");
+  const sales = period === 6 ? data.sales : data.sales12;
+  const purchases = period === 6 ? data.purchases : data.purchases12;
+  const chartX = (index: number) => 52 + index * (610 / Math.max(1, labels.length - 1));
+  const barX = (index: number) => 52 + (index + 0.5) * (610 / labels.length);
+  const chartY = (value: number) => 270 - (value / data.max) * 220;
+  const points1 = sales.map((n, i) => point(i, n, sales.length, data.max)).join(" ");
+  const points2 = purchases.map((n, i) => point(i, n, purchases.length, data.max)).join(" ");
   const activeValue = sales[Math.min(selected, sales.length - 1)];
   const activeMonth = labels[Math.min(selected, labels.length - 1)];
+  const activeValueLabel =
+    metric === "sales"
+      ? `₹${activeValue.toFixed(1)} Cr`
+      : metric === "growth"
+        ? `+${activeValue.toFixed(1)}%`
+        : activeValue === 0
+          ? "On time"
+          : `${activeValue.toFixed(1)} days late`;
 
   return (
     <GSTScrollReveal>
@@ -90,24 +122,73 @@ export default function GSTBusinessTrajectory() {
             <div className="gst-explorer__chart-area">
               <div className="gst-explorer__chart-heading">
                 <strong>{data.title}</strong>
-                <div><i className="sales-dot" />{metric === "sales" ? "Sales" : "Current period"}<i className="purchase-dot" />{metric === "sales" ? "Purchases" : "Comparison"}</div>
+                <div>
+                  {metric === "sales" ? (
+                    <><i className="sales-dot" />Sales<i className="purchase-dot" />Purchases</>
+                  ) : (
+                    <><i className={metric === "growth" ? "sales-dot" : "filing-dot"} />{metric === "growth" ? "Monthly growth" : "Filing status"}</>
+                  )}
+                </div>
               </div>
               <svg className="gst-explorer__chart" viewBox="0 0 720 350" role="img" aria-label={`${data.title} over ${period} months`}>
-                {[50, 100, 160, 210, 270].map((y) => <g key={y}><line x1="52" x2="674" y1={y} y2={y} /><text x="42" y={y + 4} textAnchor="end">{(6 - (y - 50) / 44).toFixed(1)}</text></g>)}
-                <polyline className="gst-chart-purchase-line" points={points2} />
-                <polyline className="gst-chart-sales-line" points={points1} />
-                {sales.map((n, i) => {
-                  const [cx, cy] = point(i, n, sales.length).split(",");
-                  return <circle key={i} className={`gst-explorer__point ${selected === i ? "is-selected" : ""}`} cx={cx} cy={cy} r="5" tabIndex={0} role="button" aria-label={`Select ${labels[i]}`} onClick={() => setSelected(i)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(i); } }} />;
+                {data.ticks.map((tick) => {
+                  const y = chartY(tick);
+                  return <g key={tick}><line x1="52" x2="674" y1={y} y2={y} /><text x="42" y={y + 4} textAnchor="end">{metric === "growth" ? `${tick}%` : tick}</text></g>;
                 })}
-                {labels.map((label, i) => <text className="gst-explorer__month" key={label} x={52 + i * (610 / Math.max(1, labels.length - 1))} y="305" textAnchor="middle">{label}</text>)}
+                {data.chartType === "line" && (
+                  <>
+                    <polyline className="gst-chart-purchase-line" points={points2} />
+                    <polyline className="gst-chart-sales-line" points={points1} />
+                    {sales.map((n, i) => {
+                      const [cx, cy] = point(i, n, sales.length, data.max).split(",");
+                      return <circle key={i} className={`gst-explorer__point ${selected === i ? "is-selected" : ""}`} cx={cx} cy={cy} r="5" tabIndex={0} role="button" aria-label={`Select ${labels[i]}`} onClick={() => setSelected(i)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(i); } }} />;
+                    })}
+                  </>
+                )}
+                {data.chartType === "growth" && sales.map((value, i) => {
+                  const barWidth = period === 6 ? 34 : 24;
+                  const y = chartY(value);
+                  return (
+                    <g
+                      key={labels[i]}
+                      className={`gst-explorer__bar ${selected === i ? "is-selected" : ""}`}
+                      tabIndex={0}
+                      role="button"
+                      aria-label={`Select ${labels[i]}: ${value}% growth`}
+                      onClick={() => setSelected(i)}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(i); } }}
+                    >
+                      <rect x={barX(i) - barWidth / 2} y={y} width={barWidth} height={270 - y} rx="1" />
+                      <text className="gst-explorer__bar-label" x={barX(i)} y={y - 8} textAnchor="middle">{value}%</text>
+                    </g>
+                  );
+                })}
+                {data.chartType === "filing" && sales.map((value, i) => {
+                  const y = chartY(value);
+                  const isLate = value > 0;
+                  return (
+                    <g
+                      key={labels[i]}
+                      className={`gst-explorer__filing-point ${selected === i ? "is-selected" : ""} ${isLate ? "is-late" : ""}`}
+                      tabIndex={0}
+                      role="button"
+                      aria-label={`Select ${labels[i]}: ${value === 0 ? "on time" : `${value} days late`}`}
+                      onClick={() => setSelected(i)}
+                      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(i); } }}
+                    >
+                      {isLate && <rect x={chartX(i) - 3} y={y} width="6" height={270 - y} rx="1" />}
+                      <circle cx={chartX(i)} cy={y} r={isLate ? 4 : 3} />
+                    </g>
+                  );
+                })}
+                {labels.map((label, i) => <text className="gst-explorer__month" key={label} x={metric === "growth" ? barX(i) : chartX(i)} y="305" textAnchor="middle">{label}</text>)}
               </svg>
             </div>
             <aside className="gst-explorer__detail">
               <span className="gst-explorer__date">{activeMonth.toUpperCase()}</span>
-              <strong>{data.unit}{activeValue.toFixed(1)}{metric === "sales" ? " Cr" : metric === "growth" ? "%" : ""}</strong>
-              <span className="gst-explorer__caption">{metric === "sales" ? "Reported sales" : metric === "growth" ? "Reported sales growth" : "Filing delay"}</span>
-              <p>{metric === "sales" ? `Purchases: ₹${purchases[Math.min(selected, purchases.length - 1)].toFixed(1)} Cr. Read the two series together to explore changes in reported business activity.` : "Compare the selected period with the borrower’s reporting history and operating context."}</p>
+              <strong>{activeValueLabel}</strong>
+              <span className="gst-explorer__caption">{metric === "sales" ? "Reported sales" : metric === "growth" ? "Reported sales growth" : "Illustrative filing timing"}</span>
+              <p>{metric === "sales" ? `Purchases: ₹${purchases[Math.min(selected, purchases.length - 1)].toFixed(1)} Cr. Read the two series together to explore changes in reported business activity.` : metric === "growth" ? "Compare the monthly change with the borrower’s reporting history and operating context." : activeValue === 0 ? "The filing was received on time for the assumed due date." : "This period shows a filing received after the assumed due date."}</p>
               <div className="gst-explorer__prompt"><b>REVIEW PROMPT</b><span>How does this month compare with the borrower’s operating cycle and cash flows?</span></div>
             </aside>
           </div>

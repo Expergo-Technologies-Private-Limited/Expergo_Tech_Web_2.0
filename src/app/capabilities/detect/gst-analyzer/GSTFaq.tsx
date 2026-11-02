@@ -30,7 +30,7 @@ export default function GSTFaq() {
       <section className="gst-faq" aria-labelledby="gst-faq-title">
         <header className="gst-section-heading" data-gst-reveal-item>
           <span className="gst-section-eyebrow">QUESTIONS, ANSWERED</span>
-          <h2 id="gst-faq-title">A closer look at <span>GST intelligence.</span></h2>
+          <h2 id="gst-faq-title">A closer look at <span>Earlysafe GST Intelligence.</span></h2>
         </header>
         <div className="gst-faq__list" data-gst-reveal-item>
           {questions.map((item) => (

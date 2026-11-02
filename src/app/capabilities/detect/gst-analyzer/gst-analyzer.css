@@ -261,7 +261,12 @@
 .gst-chart__moving-line {
   stroke-dasharray: 1 1;
   stroke-dashoffset: 1;
-  animation: gst-line-draw 3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: gst-line-draw 3s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+  animation-play-state: paused;
+}
+
+.gst-chart--active .gst-chart__moving-line {
+  animation-play-state: running;
 }
 
 .gst-chart__months {
@@ -764,7 +769,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gst-chart__moving-line {
+  .gst-chart__moving-line,
+  .gst-chart--active .gst-chart__moving-line {
     animation: none;
     stroke-dasharray: 1 0;
     stroke-dashoffset: 0;

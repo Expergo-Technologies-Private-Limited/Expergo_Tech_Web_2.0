@@ -1,8 +1,8 @@
 import GSTScrollReveal from "./GSTScrollReveal";
 
 const signals = [
-  { number: "01", title: "Sales & business momentum?", text: "Review reported sales trajectories, period movements and seasonal patterns. Identify the months that merit a closer conversation.", side: "left" },
-  { number: "02", title: "Purchase & operating patterns?", text: "Compare purchases with sales to frame questions about the operating cycle and shifts in trading activity.", side: "right" },
+  { number: "01", title: "Sales & business momentum", text: "Review reported sales trajectories, period movements and seasonal patterns. Identify the months that merit a closer conversation.", side: "left" },
+  { number: "02", title: "Purchase & operating patterns", text: "Compare purchases with sales to frame questions about the operating cycle and shifts in trading activity.", side: "right" },
   { number: "03", title: "Filing behaviour & continuity", text: "Keep filing gaps and delays in view. Distinguish missing information from evidence of business change.", side: "left" },
   { number: "04", title: "Coverage & analytical context", text: "Understand the reporting period and GSTIN coverage behind each view, so interpretations reflect the available evidence.", side: "right" },
 ];

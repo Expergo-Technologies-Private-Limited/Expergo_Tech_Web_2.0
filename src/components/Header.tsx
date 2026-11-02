@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import { useBookDemo } from "@/components/book-demo/BookDemoProvider";
+import app from "antd/es/app";
 
 const isRouteActive = (pathname: string, href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
@@ -182,6 +183,7 @@ export function Header() {
                             <div
                               key={group.key}
                               className={`relative rounded-md transition ${groupActive ? "bg-[#EAF5FF]" : "hover:bg-[#F4FAFB]"}`}
+                              onMouseEnter={() => setExpandedCapabilityGroup(group.key)}
                             >
                               <button
                                 type="button"
@@ -191,6 +193,7 @@ export function Header() {
                                 className="flex w-full items-start justify-between gap-3 px-3 py-3 text-left"
                                 aria-expanded={groupExpanded}
                                 aria-controls={groupExpanded ? flyoutId : undefined}
+                                onFocus={() => setExpandedCapabilityGroup(group.key)}
                               >
                                 <span>
                                   <span
@@ -278,13 +281,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#book-demo"
+          <button
+            type="button"
             onClick={openBookDemo}
             className="hidden sm:inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
           >
             Book Demo
-          </a>
+          </button>
           <button
             className="inline-flex items-center justify-center rounded-md p-2 text-[#344054] hover:bg-gray-100 md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -398,8 +401,8 @@ export function Header() {
                 );
               })}
               <div className="pt-4 sm:hidden">
-                <a
-                  href="#book-demo"
+                <button
+                  type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     openBookDemo();
@@ -407,7 +410,7 @@ export function Header() {
                   className="w-full inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
                 >
                   Book Demo
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
@@ -416,3 +419,6 @@ export function Header() {
     </motion.header>
   );
 }
+
+
+  

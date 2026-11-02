@@ -272,6 +272,61 @@
   fill: #06aebb;
 }
 
+.gst-explorer__bar,
+.gst-explorer__filing-point {
+  cursor: pointer;
+  outline: none;
+}
+
+.gst-explorer__bar rect {
+  fill: #148f82;
+  transition: fill 160ms ease;
+}
+
+.gst-explorer__bar:hover rect,
+.gst-explorer__bar.is-selected rect {
+  fill: #0d746b;
+}
+
+.gst-explorer__chart .gst-explorer__bar-label {
+  fill: #344f50;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.gst-explorer__bar:focus-visible rect,
+.gst-explorer__filing-point:focus-visible circle {
+  stroke: #152e37;
+  stroke-width: 2;
+}
+
+.gst-explorer__filing-point rect {
+  fill: #bd9257;
+}
+
+.gst-explorer__filing-point circle {
+  fill: #148f82;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.gst-explorer__filing-point.is-late circle {
+  fill: #bd9257;
+}
+
+.gst-explorer__filing-point.is-selected circle {
+  stroke: #152e37;
+  stroke-width: 2;
+}
+
+.filing-dot {
+  width: 8px;
+  height: 8px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: #bd9257;
+}
+
 .gst-explorer__detail {
   display: flex;
   flex-direction: column;

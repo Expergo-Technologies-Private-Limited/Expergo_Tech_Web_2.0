@@ -1,20 +1,39 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { BookDemoButton } from "@/components/book-demo/BookDemoProvider";
 
 const months = ["APR", "MAY", "JUN", "JUL", "AUG", "SEP"];
 
 function GSTDashboardPreview() {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [isChartVisible, setIsChartVisible] = useState(false);
+
+  useEffect(() => {
+    const chart = chartRef.current;
+    if (!chart) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsChartVisible(entry.isIntersecting && entry.intersectionRatio >= 0.35),
+      { threshold: 0.35 },
+    );
+
+    observer.observe(chart);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="gst-dashboard" aria-label="Illustrative GST analytics dashboard">
       <div className="gst-dashboard__topbar">
-        <span>EARLYSAFE / GST INTELLIGENCE</span>
+        <span>EARLYSAFE GST INTELLIGENCE</span>
         <span className="gst-dashboard__dots" aria-hidden="true">● ● ●</span>
       </div>
 
       <div className="gst-dashboard__body">
         <div className="gst-dashboard__company">
-          <span>Aarav Components Pvt Ltd</span>
+          <span>XYZ Private Limited</span>
           <span className="gst-dashboard__badge">Illustrative</span>
         </div>
 
@@ -33,7 +52,12 @@ function GSTDashboardPreview() {
           </div>
         </div>
 
-        <div className="gst-chart" role="img" aria-label="Illustrative sales and purchases trend from April to September">
+        <div
+          ref={chartRef}
+          className={`gst-chart${isChartVisible ? " gst-chart--active" : ""}`}
+          role="img"
+          aria-label="Illustrative sales and purchases trend from April to September"
+        >
           <Image
             className="gst-chart__layer gst-chart__grid"
             src="/images/gst-analyzer/chart-grid.svg"
@@ -99,7 +123,7 @@ export default function GSTAnalyzerHero() {
       <div className="gst-hero__glow" aria-hidden="true" />
       <div className="gst-hero__content">
         <div className="gst-hero__copy">
-          <div className="gst-hero__eyebrow">GST intelligence for lending teams</div>
+          <div className="gst-hero__eyebrow">Earlysafe GST Intelligence for lending teams</div>
           <h1 id="gst-hero-title">
             <span>See the business.</span>
             <span className="gst-hero__accent">Understand the risk.</span>
