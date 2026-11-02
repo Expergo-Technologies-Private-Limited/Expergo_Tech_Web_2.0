@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
-import { useBookDemo } from "@/components/book-demo/BookDemoProvider";
 
 const isRouteActive = (pathname: string, href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
@@ -80,7 +79,6 @@ const capabilityGroups = [
 
 export function Header() {
   const pathname = usePathname();
-  const { openBookDemo } = useBookDemo();
   const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
   const [expandedCapabilityGroup, setExpandedCapabilityGroup] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -273,13 +271,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#book-demo"
-            onClick={openBookDemo}
+          <Link
+            href="/book-demo"
             className="hidden sm:inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
           >
             Book Demo
-          </a>
+          </Link>
           <button
             className="inline-flex items-center justify-center rounded-md p-2 text-[#344054] hover:bg-gray-100 md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -393,16 +390,13 @@ export function Header() {
                 );
               })}
               <div className="pt-4 sm:hidden">
-                <a
-                  href="#book-demo"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    openBookDemo();
-                  }}
+                <Link
+                  href="/book-demo"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="w-full inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
                 >
                   Book Demo
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

@@ -103,8 +103,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html
@@ -120,6 +122,7 @@ export default async function RootLayout({
             <SpeedInsights />
             <Analytics />
             {children}
+            {modal}
             {(await draftMode()).isEnabled && <VisualEditing />}
             <Footer />
           </Providers>

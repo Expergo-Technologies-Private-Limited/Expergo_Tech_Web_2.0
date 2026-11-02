@@ -1,65 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
-import { BookDemoModal, type BookDemoMode } from "./BookDemoModal";
-
-type BookDemoContextValue = {
-  openBookDemo: () => void;
-  openExecutiveBrief: () => void;
-  closeBookDemo: () => void;
-};
-
-const BookDemoContext = createContext<BookDemoContextValue | null>(null);
-
-export function useBookDemo() {
-  const ctx = useContext(BookDemoContext);
-  if (!ctx) {
-    throw new Error("useBookDemo must be used within BookDemoProvider");
-  }
-  return ctx;
-}
-
-export function BookDemoProvider({ children }: { children: ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const [mode, setMode] = useState<BookDemoMode>("demo");
-  const openBookDemo = useCallback(() => {
-    setMode("demo");
-    setOpen(true);
-  }, []);
-  const openExecutiveBrief = useCallback(() => {
-    setMode("brief");
-    setOpen(true);
-  }, []);
-  const closeBookDemo = useCallback(() => setOpen(false), []);
-
-  useEffect(() => {
-    const openFromHash = () => {
-      if (window.location.hash === "#book-demo") {
-        openBookDemo();
-      } else if (window.location.hash === "#executive-brief") {
-        openExecutiveBrief();
-      }
-    };
-
-    openFromHash();
-    window.addEventListener("hashchange", openFromHash);
-    return () => window.removeEventListener("hashchange", openFromHash);
-  }, [openBookDemo, openExecutiveBrief]);
-
-  return (
-    <BookDemoContext.Provider value={{ openBookDemo, openExecutiveBrief, closeBookDemo }}>
-      {children}
-      <BookDemoModal open={open} onClose={closeBookDemo} mode={mode} />
-    </BookDemoContext.Provider>
-  );
-}
+import Link from "next/link";
+import type { ReactNode } from "react";
+import type { BookDemoMode } from "./BookDemoModal";
 
 function getNodeText(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
@@ -82,17 +25,15 @@ export function BookDemoButton({
   children: ReactNode;
   mode?: BookDemoMode;
 }) {
-  const { openBookDemo, openExecutiveBrief } = useBookDemo();
   const resolvedMode =
     mode ?? (/brief|breif/i.test(getNodeText(children)) ? "brief" : "demo");
 
   return (
-    <a
-      href={resolvedMode === "brief" ? "#executive-brief" : "#book-demo"}
-      onClick={resolvedMode === "brief" ? openExecutiveBrief : openBookDemo}
+    <Link
+      href={resolvedMode === "brief" ? "/executive-brief" : "/book-demo"}
       className={className}
     >
       {children}
-    </a>
+    </Link>
   );
 }
