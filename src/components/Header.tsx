@@ -273,13 +273,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            type="button"
+          <a
+            href="#book-demo"
             onClick={openBookDemo}
             className="hidden sm:inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
           >
             Book Demo
-          </button>
+          </a>
           <button
             className="inline-flex items-center justify-center rounded-md p-2 text-[#344054] hover:bg-gray-100 md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -393,8 +393,8 @@ export function Header() {
                 );
               })}
               <div className="pt-4 sm:hidden">
-                <button
-                  type="button"
+                <a
+                  href="#book-demo"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     openBookDemo();
@@ -402,7 +402,7 @@ export function Header() {
                   className="w-full inline-flex items-center justify-center rounded-lg bg-linear-to-l from-[#0B64F4] to-[#0BABCB] px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:opacity-95 active:scale-[0.98]"
                 >
                   Book Demo
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>
