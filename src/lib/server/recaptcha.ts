@@ -82,53 +82,41 @@ export async function verifyRecaptcha(
     process.env.RECAPTCHA_ALLOW_DEV_BYPASS === "true";
 
   if (!result.success) {
-
-    if (!isProd) {
+    if (allowBypassInDev) {
       console.warn(
         "[recaptcha] verification failed in non-production, bypassing",
         result["error-codes"] ?? []
       );
-      return { enabled: true, score: result.score ?? null };
+      return { enabled: false, score: result.score ?? null };
     }
-    throw new Error("reCAPTCHA verification failed.");
+    console.error("[recaptcha] verification failed", {
+      expectedAction,
+      errorCodes: result["error-codes"] ?? [],
+      hostname: result.hostname,
+    });
+    throw new Error(formatRecaptchaFailure(result["error-codes"]));
   }
 
   if (result.action && result.action !== expectedAction) {
-    if (!isProd) {
+    if (allowBypassInDev) {
       console.warn(
         "[recaptcha] action mismatch in non-production, bypassing",
         { expectedAction, receivedAction: result.action }
       );
-      return { enabled: true, score: result.score ?? null };
+      return { enabled: false, score: result.score ?? null };
     }
     throw new Error("reCAPTCHA action did not match.");
   }
 
   if (typeof result.score === "number" && result.score < minScore) {
-    if (!isProd) {
+    if (allowBypassInDev) {
       console.warn(
         "[recaptcha] low score in non-production, bypassing",
         { score: result.score, minScore }
       );
-      return { enabled: true, score: result.score };
+      return { enabled: false, score: result.score };
     }
     throw new Error("reCAPTCHA score was too low.");
-    if (allowBypassInDev) {
-      console.warn("[recaptcha] verification bypassed in development", {
-        errorCodes: result["error-codes"] ?? [],
-        hostname: result.hostname,
-      });
-      return { enabled: false, score: null };
-    }
-    throw new Error(formatRecaptchaFailure(result["error-codes"]));
-  }
-
-  if (result.action && result.action !== expectedAction) {
-    throw new Error("reCAPTCHA verification failed. Please refresh and try again.");
-  }
-
-  if (typeof result.score === "number" && result.score < minScore) {
-    throw new Error("reCAPTCHA verification failed. Please try again.");
   }
 
   return {
