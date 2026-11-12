@@ -31,10 +31,6 @@ function env(name: string) {
   return process.env[name]?.trim();
 }
 
-function isMailerConfigured() {
-  return REQUIRED_SMTP_KEYS.every((key) => Boolean(env(key)));
-}
-
 function parseBoolean(value: string | undefined, fallback: boolean) {
   if (!value) return fallback;
   return ["1", "true", "yes"].includes(value.toLowerCase());
@@ -150,7 +146,7 @@ function userEmailHtml(input: BookDemoInput) {
       <p style="margin:0 0 12px;">
         Interest shared: <strong>${escapeHtml(input.useCase)}</strong>
       </p>
-      <p style="margin:20px 0 0;">Regards,<br />EarlySafe Team</p>
+      <p style="margin:20px 0 0;">Regards,<br />Expergo Team</p>
     </div>
   `;
 }
@@ -174,20 +170,11 @@ function userEmailText(input: BookDemoInput) {
     `Interest shared: ${input.useCase}`,
     "",
     "Regards,",
-    "EarlySafe Team",
+    "Expergo Team",
   ].join("\n");
 }
 
 export async function sendBookDemoEmails(input: BookDemoInput) {
-  if (!isMailerConfigured()) {
-    if (process.env.NODE_ENV === "production") {
-      await createTransport();
-    }
-
-    console.warn("[book-demo] SMTP email is not configured; skipping emails.");
-    return;
-  }
-
   const { companyEmail, from, transporter } = await createTransport();
 
   await Promise.all([
@@ -195,7 +182,7 @@ export async function sendBookDemoEmails(input: BookDemoInput) {
       from,
       to: input.workEmail,
       replyTo: companyEmail,
-      subject: `Your EarlySafe ${requestLabel(input).toLowerCase()} is confirmed`,
+      subject: `Your Expergo ${requestLabel(input).toLowerCase()} is confirmed`,
       text: userEmailText(input),
       html: userEmailHtml(input),
     }),

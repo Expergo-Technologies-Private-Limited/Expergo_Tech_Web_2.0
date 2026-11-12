@@ -14,7 +14,7 @@ export type BookDemoModalProps = {
 };
 
 const COMPANY_SIZES = [
-  "1-10",
+  "1-10", 
   "11-50",
   "51-200",
   "201-500",
@@ -32,10 +32,14 @@ const INDUSTRIES = [
 ] as const;
 
 const USE_CASE_OPTIONS = [
-  "Early risk detection & watchlist control",
-  "Portfolio level visibility & stress tracking",
-  "Execution discipline & SLA control",
-  "Compliance & inspection readiness",
+  "GST Intelligence",
+  "Bureau Intelligence",
+  "Bank Statement Intelligence",
+  "RCU Management",
+  "EWS Management",
+  "FRM Management",
+  "Willful Defaulter Management",
+  "Portfolio Surveillance",
 ] as const;
 
 const COUNTRY_CODES = [
