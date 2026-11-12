@@ -12,7 +12,7 @@ export async function POST(req: Request) {
     const recaptcha = await verifyRecaptcha(input.recaptchaToken, "book_demo");
 
     await saveBookDemoRequest(input, recaptcha);
-    // await sendBookDemoEmails(input);
+    await sendBookDemoEmails(input);
 
     return NextResponse.json({ success: true });
   } catch (err) {
@@ -21,7 +21,10 @@ export async function POST(req: Request) {
       : err instanceof Error
         ? err.message
         : "Could not submit your request.";
-    const status = message.includes("configured") ? 500 : 400;
+    const isRecaptchaClientError =
+      message.startsWith("reCAPTCHA") &&
+      !message.startsWith("reCAPTCHA server configuration");
+    const status = err instanceof ZodError || isRecaptchaClientError ? 400 : 500;
 
     return NextResponse.json({ error: message }, { status });
   }
